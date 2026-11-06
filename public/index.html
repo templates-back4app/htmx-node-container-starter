@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTMX + Node Starter</title>
+    <script src="/vendor/htmx.min.js" defer></script>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; }
+      .card { border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+      .ok { color: #166534; }
+      .error { color: #991b1b; }
+      button { padding: 0.4rem 0.9rem; }
+      input { padding: 0.4rem; }
+    </style>
+  </head>
+  <body>
+    <h1>HTMX + Node starter</h1>
+    <p>
+      A minimal server-rendered app: Express 5 serves this page, and
+      <a href="https://htmx.org">htmx</a> (vendored locally, pinned to 2.0.11)
+      swaps in HTML fragments from the server — no JSON, no client framework.
+    </p>
+
+    <h2>1. Load a fragment</h2>
+    <button hx-get="/fragment" hx-target="#fragment-slot" hx-swap="innerHTML">
+      Fetch server fragment
+    </button>
+    <div id="fragment-slot"></div>
+
+    <h2>2. Submit a form</h2>
+    <form hx-post="/greet" hx-target="#greet-result" hx-swap="innerHTML">
+      <label>
+        Your name:
+        <input type="text" name="name" placeholder="Ada" />
+      </label>
+      <button type="submit">Say hello</button>
+    </form>
+    <div id="greet-result"></div>
+  </body>
+</html>
