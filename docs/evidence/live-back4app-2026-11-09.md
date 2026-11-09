@@ -10,3 +10,9 @@ App: spoke-htmx (free plan), created fresh from back4app-templates/container-dep
 - TTFB on / (3 requests, illustrative): 0.967 / 0.968 / 0.975 s.
 
 Local measurements: docs/evidence/local-measurements-2026-11-06.md
+
+## Corrected version, browser-verified (app spoke-htmx2, commit d141351, 2026-11-09 ~15:23 UTC)
+Three interactions executed in a real browser against the live URL:
+1. "Fetch server fragment" → fragment swapped into the DOM ("Fragment rendered on the server · Server time: 2026-11-09T15:23:53.909Z").
+2. Valid submit (name "George") → "Hello, George — rendered by Express, swapped by htmx." displayed.
+3. Empty submit → validation fragment "Please tell me your name." DISPLAYED — the 200-fix behaves as intended (htmx does not swap 4xx/5xx error responses by default).
