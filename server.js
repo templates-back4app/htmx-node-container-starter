@@ -33,7 +33,11 @@ app.get("/fragment", (_req, res) => {
 app.post("/greet", (req, res) => {
   const name = String(req.body.name ?? "").trim();
   if (!name) {
-    res.status(422).send(`<p class="error">Please tell me your name.</p>`);
+    // htmx's default response handling only swaps 2xx responses, so a 422
+    // fragment would never be displayed (https://htmx.org/docs/#response-handling).
+    // Keep the status 200 and let the markup carry the error state — or keep a
+    // 4xx status and opt htmx in to swapping it via the htmx-config meta tag.
+    res.send(`<p class="error">Please tell me your name.</p>`);
     return;
   }
   const safe = name.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
