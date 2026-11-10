@@ -1,0 +1,39 @@
+{
+  "kind": "htmx",
+  "url": "https://mcphtmxnoport-4t7uvbu7.back4.app",
+  "at": "2026-11-10T14:36:38.617Z",
+  "checks": [
+    {
+      "name": "GET / status",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "page h1 rendered",
+      "pass": true,
+      "detail": "HTMX + Node starter"
+    },
+    {
+      "name": "fragment swapped into the page",
+      "pass": true,
+      "detail": "2026-11-10T14:36:42.065Z"
+    },
+    {
+      "name": "server time differs between two requests",
+      "pass": true,
+      "detail": "2026-11-10T14:36:42.065Z -> 2026-11-10T14:36:43.733Z"
+    },
+    {
+      "name": "form POST swaps the greeting into the page",
+      "pass": true,
+      "detail": "Hello, Ada — rendered by Express, swapped by htmx."
+    },
+    {
+      "name": "empty form shows the validation fragment",
+      "pass": true,
+      "detail": "Please tell me your name."
+    }
+  ],
+  "passed": 6,
+  "failed": 0
+}
