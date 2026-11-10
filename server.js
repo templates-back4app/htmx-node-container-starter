@@ -31,9 +31,9 @@ app.get("/fragment", (_req, res) => {
 
 // A form endpoint: htmx POSTs the form and swaps the response in place.
 app.post("/greet", (req, res) => {
-  const name = String(req.body.name ?? "").trim();
+  const name = String(req.body?.name ?? "").trim();
   if (!name) {
-    // htmx's default response handling only swaps 2xx responses, so a 422
+    // htmx does not swap 4xx/5xx error responses by default, so a 422
     // fragment would never be displayed (https://htmx.org/docs/#response-handling).
     // Keep the status 200 and let the markup carry the error state — or keep a
     // 4xx status and opt htmx in to swapping it via the htmx-config meta tag.
